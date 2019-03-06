@@ -1,0 +1,1 @@
+Added link to Projects in navbar, but only if we are logged in.

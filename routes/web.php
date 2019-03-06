@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+// skapat från php artisan make:auth
+Auth::routes();
+
+
+Route::get('/', 'PageController@welcome');
+
+// middleware samlar resources i funktionen och frågar fler frågor eller något
+Route::middleware(['auth'])->group(function() {
+	Route::resource('/projects', 'ProjectController');
+    Route::resource('/todos', 'TodoController');
+    
+    // skapat från php artisan make:auth
+	Route::get('/dashboard', 'DashboardController@index');
 });
