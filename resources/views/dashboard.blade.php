@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-
-//Renamed `home` to `dashboard` and changed redirect after login/register.
+{{--  Renamed `home` to `dashboard` and changed redirect after login/register.  --}}
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
