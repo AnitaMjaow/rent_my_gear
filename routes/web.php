@@ -23,7 +23,7 @@ Route::get('/', 'PageController@welcome');
 Route::middleware(['auth'])->group(function() {
 	Route::resource('/projects', 'ProjectController');
     Route::resource('/todos', 'TodoController');
-    
+
     // skapat från php artisan make:auth
-	Route::get('/dashboard', 'DashboardController@index');
+	Route::get('/minasida', 'MinasidaController@index');
 });

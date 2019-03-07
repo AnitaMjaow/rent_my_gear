@@ -17,7 +17,7 @@
 
                     <p>You are logged in!</p>
 
-					<p>This is the dashboard.</p>
+					<p>This is the minasida.</p>
                 </div>
             </div>
         </div>
