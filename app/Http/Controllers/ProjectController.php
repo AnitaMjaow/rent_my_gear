@@ -1,6 +1,4 @@
 <?php
-
-
 namespace App\Http\Controllers;
 use Auth;
 use App\Project;
@@ -8,17 +6,21 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
 	/**
+	 * Validation Rules
+	 */
+	protected $validation_rules = [
+		'title' => 'required|min:5',
+		'description' => 'required|min:5',
+	];
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index()
 	{
-		//$projects = Projects::all();
-		$projects = Project::where('user_id', Auth::user()=>id)=>get();
-
-		
-
+		//$projects = Project::where('user_id', Auth::user()->id)->get();
+		$projects = Auth::user()->projects;
 		return view('projects/index', ['projects' => $projects]);
 	}
 	/**
@@ -38,11 +40,13 @@ class ProjectController extends Controller
 	 */
 	public function store(Request $request)
 	{
+		$validData = $request->validate($this->validation_rules);
 		$project = new Project();
-		$project->title = $request->title;
-		$project->description = $request->description;
+		$project->user_id = Auth::user()->id;
+		$project->title = $validData['title'];
+		$project->description = $validData['description'];
 		$project->save();
-		return redirect('/projects/' . $project->id);
+		return redirect('/projects')->with('status', 'Project created successfully!');
 	}
 	/**
 	 * Display the specified resource.
@@ -74,10 +78,11 @@ class ProjectController extends Controller
 	 */
 	public function update(Request $request, Project $project)
 	{
-		$project->title = $request->title;
-		$project->description = $request->description;
+		$validData = $request->validate($this->validation_rules);
+		$project->title = $validData['title'];
+		$project->description = $validData['description'];
 		$project->save();
-		return redirect('/projects/' . $project->id);
+		return redirect('/projects/' . $project->id)->with('status', 'Project updated successfully!');
 	}
 	/**
 	 * Remove the specified resource from storage.
@@ -87,6 +92,10 @@ class ProjectController extends Controller
 	 */
 	public function destroy(Project $project)
 	{
-		return redirect('/projects');
+		foreach ($project->todos as $todo) {
+			$todo->delete();
+		}
+		$project->delete();
+		return redirect('/projects')->with('status', 'Project successfully deleted 😅!');
 	}
 }
