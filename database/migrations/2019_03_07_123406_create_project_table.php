@@ -13,10 +13,13 @@ class CreateProjectTable extends Migration
      */
     public function up()
     {
-        Schema::create('project', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
-        });
+        Schema::create('projects', function (Blueprint $table) {
+			$table->bigIncrements('id');
+			$table->bigInteger('user_id')->unsigned();
+			$table->string('title');
+			$table->text('description');
+			$table->timestamps();
+		});
     }
 
     /**
