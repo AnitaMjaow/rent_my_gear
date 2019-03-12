@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-{{--  Renamed `home` to `dashboard` and changed redirect after login/register.  --}}
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -17,7 +16,7 @@
 
                     <p>You are logged in!</p>
 
-					<p>This is the minasida.</p>
+					<p>This is the dashboard💃💃💃💃💃'.</p>
                 </div>
             </div>
         </div>

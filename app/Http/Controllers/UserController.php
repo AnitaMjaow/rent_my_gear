@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\User;
 use Illuminate\Http\Request;
+
 class UserController extends Controller
 {
     /**
@@ -13,6 +16,7 @@ class UserController extends Controller
     {
         //
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -22,6 +26,7 @@ class UserController extends Controller
     {
         //
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -32,6 +37,7 @@ class UserController extends Controller
     {
         //
     }
+
     /**
      * Display the specified resource.
      *
@@ -42,6 +48,7 @@ class UserController extends Controller
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -52,6 +59,7 @@ class UserController extends Controller
     {
         //
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -63,6 +71,7 @@ class UserController extends Controller
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      *

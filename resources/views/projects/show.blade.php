@@ -1,30 +1,22 @@
-extends('layouts/app')
+@extends('layouts/app')
 
 @section('content')
 	<div class="container mt-3">
-		<h1>{{ $project->title }}</h1>
 
-		<p>{{ $project->description }}</p>
 
-		<ol>
-		@foreach($todos as $todo)
-			<li>{{ $todo->title }}</li>
-		@endforeach
-		</ol>
+        <h1>All Articles</h1>
 
-		<div>
-			<a href="/projects/{{ $project->id }}/edit" class="btn btn-warning">Edit Project</a>
-
-			<form method="POST" action="/projects/{{ $project->id }}">
-				@csrf
-				@method('DELETE')
-
-				<input type="submit" value="Delete Project" class="btn btn-danger">
-			</form>
-		</div>
-
-		<div>
-			<a href="/projects">&laquo; Back to all projects</a>
-		</div>
-	</div>
+<div class="col-lg-4 col-md-6 mb-4 text-left">
+						<div class="card h-100">
+                            <ol>
+@foreach($articles as $article)
+    <a href="#"><img class="card-img-top" height="150px" src="" alt="image" ></a>
+    <div class="card-body">
+        <h5 class="card-title">
+            <a href="/projects/{{ $article->name }}">{{$article->name}}</a></li>
+        </h5>
+        <h6>{{ $article->rent_price }}</h6>
+    </div>
+</div>
+</div>
 @endsection

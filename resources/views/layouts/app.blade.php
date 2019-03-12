@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'RMG') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -35,7 +35,7 @@
                     <ul class="navbar-nav mr-auto">
 						@auth
 							<li class="nav-item">
-								<a class="nav-link" href="/projects">Projects</a>
+								<a class="nav-link" href="/projects/index">Articles</a>
 							</li>
 						@endauth
                     </ul>
@@ -77,8 +77,27 @@
         </nav>
 
         <main class="py-4">
+			<div class="container ">
+				<div class="row">
+					<div class="col-2">
+						
+					<h1 class="my-4">Category</h1>
+
+
+				  <div class="list-group ">
+					  @foreach($items as $item)
+					<a href="" class="list-group-item">{{$item->category_name}}</a>
+					@endforeach
+					<a href="" class="list-group-item">Dator</a>
+                    @auth
+                                <button type="button" mt-8 href="/projects/adsCategory" class="btn btn-info">Add a new Article</button>
+
+                        @endauth
+				  </div>
+			  </div>
+				<div class="col-10">
             @yield('content')
-        </main>
-    </div>
+		</main>
+		
 </body>
 </html>
