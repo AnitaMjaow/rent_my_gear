@@ -3,14 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{
-         Article,
-         City,
-         Category,
-         Image
-        };
 
-class Category extends Controller
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,20 +21,10 @@ class Category extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function create()  ///to call create Article
-{
-    $articles=Article::all()
-                   // ->$latest()
-                   // ->paginate(9);
-        return view::make('layputs/app', ['articles' => $articles]);
+    public function create()
+    {
+        //
     }
-        // dd($categories);
-
-        
-
- 
-
-    
 
     /**
      * Store a newly created resource in storage.
@@ -50,7 +34,14 @@ class Category extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article=Article::create($request->all() + ['user_id'=>$request->user()->user_id]);
+     $article->name=$request->name;
+        $article->descraption=$request->descraption;
+        $article->rent_price=$request->rent_price;
+        // $article->category_
+        // $article->image_url=$request->image_url;
+        $article->save();
+        
     }
 
     /**

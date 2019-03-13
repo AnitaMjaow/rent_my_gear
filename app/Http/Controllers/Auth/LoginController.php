@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/minasida';
+    protected $redirectTo = '/projects/index';
 
     /**
      * Create a new controller instance.
@@ -33,7 +33,9 @@ class LoginController extends Controller
      * @return void
      */
     public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
+
+{
+    $this->middleware('guest', ['except' => ['logout', 'getLogout']]);
+    return redirect('/projects/index');
+}
 }

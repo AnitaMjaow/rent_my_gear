@@ -25,7 +25,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/minasida';
+    protected $redirectTo = '/projects/index';
 
     /**
      * Create a new controller instance.

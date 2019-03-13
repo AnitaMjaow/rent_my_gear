@@ -1,16 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Article;
 use Illuminate\Http\Request;
-use App\{
-         Article,
-         City,
-         Category,
-         Image
-        };
+use App\Http\Controllers\Controller;
 
-class Category extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +14,8 @@ class Category extends Controller
      */
     public function index()
     {
-        //
+		$articles=Article::all();
+        return view('back.article.index', compact('articles'));
     }
 
     /**
@@ -27,20 +23,10 @@ class Category extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function create()  ///to call create Article
-{
-    $articles=Article::all()
-                   // ->$latest()
-                   // ->paginate(9);
-        return view::make('layputs/app', ['articles' => $articles]);
+    public function create()
+    {
+        //
     }
-        // dd($categories);
-
-        
-
- 
-
-    
 
     /**
      * Store a newly created resource in storage.
@@ -95,6 +81,6 @@ class Category extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+		$article=Article::find($id)->delet();
+	return back();    }
 }

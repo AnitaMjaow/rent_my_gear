@@ -1,28 +1,21 @@
 <?php
-//Now we have a user registration/login system! 🥳
 
 namespace App\Http\Controllers;
+
 use Auth;
 use Illuminate\Http\Request;
 
-class PageController extends Controller {
+class PageController extends Controller
+{
+	public function index() {
+		$msg = "Some message";
 
-    public function welcome() {
+		if (Auth::check()) {
+			$user = Auth::user();
 
-        $msg = "some message";
+			$msg = "You are logged in as {$user->name}!";
+		}
 
-        
-        if (Auth::check()) {
-
-
-            $user = Auth::user();
-
-            //$user->id;
-
-            $msg = "you are logged in as {$user->name}";
-    }
-
-    return view('welcome', ['msg => $msg ']);
-    }
-
+		return view('/projects/index', ['msg' => $msg]);
+	}
 }
